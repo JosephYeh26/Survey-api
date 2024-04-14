@@ -9,6 +9,7 @@ import userRouter from "./routes/user.route";
 import authRouter from "./routes/auth.route";
 import surveyRouter from "./routes/survey.route";
 import assessmentRouter from "./routes/assessment.route";
+import departmentRouter from "./routes/department.route";
 
 const app = express();
 
@@ -35,7 +36,8 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use("/api/users", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/survey", surveyRouter);
-app.use("/api/assessment", assessmentRouter)
+app.use("/api/assessment", assessmentRouter);
+app.use("/api/department", departmentRouter);
 
 // Testing
 app.get(
