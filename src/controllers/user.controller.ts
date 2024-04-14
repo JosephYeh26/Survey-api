@@ -3,6 +3,7 @@ import {
   findAllUsers,
   switchUserActive,
   updateUserScores,
+  updateUserRole
 } from "../services/user.service";
 
 export const getMeHandler = (
@@ -73,3 +74,12 @@ export const updateUserScoresHandler = async (
     next(err);
   }
 };
+
+export const updateUserRoleHandler = async (req: Request<{}, {}, {_id: string, role: string}>, res: Response, next: NextFunction) => {
+  try {
+    await updateUserRole(req.body._id, req.body.role);
+    res.status(201).json({ status: "success", message: "User role updated successfully" });
+  } catch (err: any) {
+    next(err);
+  }
+}

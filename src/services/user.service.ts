@@ -20,7 +20,7 @@ export const findUserById = async (id: string) => {
 
 // Find All users
 export const findAllUsers = async () => {
-  return await userModel.find({ role: { $ne: "admin" } });
+  return await userModel.find({ role: { $ne: "superAdmin" } });
 };
 
 // Find one user by any fields
@@ -56,3 +56,7 @@ export const switchUserActive = async (_id: string) => {
 export const updateUserScores = async (_id: string, _scores: number[][][]) => {
   return await userModel.updateOne({ _id }, { $set: { scores: _scores } });
 };
+
+export const updateUserRole = async (_id: string, role: string) => {
+  return await userModel.updateOne({ _id }, { role });
+}
