@@ -5,6 +5,7 @@ import {
   switchUserActiveHandler,
   updateUserRoleHandler,
   updateUserScoresHandler,
+  updateUserDepartmentHandler,
 } from "../controllers/user.controller";
 import { deserializeUser } from "../middleware/deserializeUser";
 import { requireUser } from "../middleware/requireUser";
@@ -27,5 +28,8 @@ router.patch("/score", restrictTo("user"), updateUserScoresHandler);
 
 // Admin update user role route
 router.patch("/role", restrictTo("superAdmin"), updateUserRoleHandler);
+
+// Admin update user department
+router.patch("/department", restrictTo("superAdmin"), updateUserDepartmentHandler);
 
 export default router;
