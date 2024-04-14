@@ -58,7 +58,7 @@ export const updateHandler = async (
   try {
     const id = req.params.id;
     let assessment = await assessmentModel.updateOne({ _id: id }, [
-      { $set: { title: req.body.title } }
+      { $set: { title: req.body.title, status: req.body.status } }
     ]);
     res.status(200).json({
       status: "success",
