@@ -9,6 +9,7 @@ import {
 } from "../services/user.service";
 import AppError from "../utils/appError";
 import { signJwt, verifyJwt } from "../utils/jwt";
+import departmentModel, { Department } from "../models/department.model";
 
 // Exclude this fields from the response
 export const excludedFields = ["password"];
@@ -42,10 +43,12 @@ export const registerHandler = async (
   next: NextFunction
 ) => {
   try {
+    console.log(req.body)
     const user = await createUser({
       email: req.body.email,
       name: req.body.name,
       password: req.body.password,
+      department: departmentModel.findById(req.body.department_id),
       scores: Array.from({ length: 6 }, () =>
         Array.from({ length: 4 }, () => Array.from({ length: 2 }, () => 0))
       ),

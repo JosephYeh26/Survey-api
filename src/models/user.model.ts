@@ -7,6 +7,7 @@ import {
   prop,
 } from "@typegoose/typegoose";
 import bcrypt from "bcryptjs";
+import { Department } from "./department.model";
 
 @index({ email: 1 })
 @pre<User>("save", async function () {
@@ -42,6 +43,9 @@ export class User {
 
   @prop()
   scores: number[][][];
+
+  @prop({ type: () => Department})
+  department: Department;
 
   // Instance method to check if passwords match
   async comparePasswords(hashedPassword: string, candidatePassword: string) {

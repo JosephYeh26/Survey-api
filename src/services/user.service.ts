@@ -60,3 +60,7 @@ export const updateUserScores = async (_id: string, _scores: number[][][]) => {
 export const updateUserRole = async (_id: string, role: string) => {
   return await userModel.updateOne({ _id }, { role });
 }
+
+export const updateUserDepartment = async (_id: string, role: string) => {
+  return await userModel.updateOne({ _id }, { department });
+}
