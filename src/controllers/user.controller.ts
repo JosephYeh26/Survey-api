@@ -88,7 +88,7 @@ export const updateUserRoleHandler = async (req: Request<{}, {}, {_id: string, r
 
 export const updateUserDepartmentHandler = async (req: Request<{}, {}, {_id: string, department_id: string}>, res: Response, next: NextFunction) => {
   try {
-    await updateUserDepartment(req.body._id, departmentModel.findById(department_id));
+    await updateUserDepartment(req.body._id, req.body.department_id);
     res.status(201).json({ status: "success", message: "User role updated successfully" });
   } catch (err: any) {
     next(err);

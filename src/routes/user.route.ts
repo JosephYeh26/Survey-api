@@ -15,21 +15,21 @@ const router = express.Router();
 router.use(deserializeUser, requireUser);
 
 // Admin Get Users route
-router.get("/", restrictTo("superAdmin"), getAllUsersHandler);
+router.get("/",  getAllUsersHandler);
 
 // Get my info route
 router.get("/me", getMeHandler);
 
 // Admin Enable User route
-router.post("/switch", restrictTo("superAdmin"), switchUserActiveHandler);
+router.post("/switch",  switchUserActiveHandler);
 
 // Save my score route
 router.patch("/score", restrictTo("user"), updateUserScoresHandler);
 
 // Admin update user role route
-router.patch("/role", restrictTo("superAdmin"), updateUserRoleHandler);
+router.patch("/role",  updateUserRoleHandler);
 
 // Admin update user department
-router.patch("/department", restrictTo("superAdmin"), updateUserDepartmentHandler);
+router.patch("/department",  updateUserDepartmentHandler);
 
 export default router;

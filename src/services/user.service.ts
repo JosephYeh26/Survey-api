@@ -5,6 +5,7 @@ import userModel, { User } from "../models/user.model";
 import { excludedFields } from "../controllers/auth.controller";
 import { signJwt } from "../utils/jwt";
 import { DocumentType } from "@typegoose/typegoose";
+import departmentModel, { Department } from "../models/department.model";
 
 // CreateUser service
 export const createUser = async (input: Partial<User>) => {
@@ -61,6 +62,6 @@ export const updateUserRole = async (_id: string, role: string) => {
   return await userModel.updateOne({ _id }, { role });
 }
 
-export const updateUserDepartment = async (_id: string, role: string) => {
-  return await userModel.updateOne({ _id }, { department });
+export const updateUserDepartment = async (_id: string, department_id: string) => {
+  return await userModel.updateOne({ _id }, { department: await departmentModel.findById(department_id) });
 }
